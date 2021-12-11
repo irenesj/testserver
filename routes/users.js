@@ -14,8 +14,13 @@ router.get('/', function(req, res, next) {
 router.post('/', function (req, res) {
  
  var nombre = req.body.nombre || '';
- res.json( {nombre: "usuario2"} );
 
+ if(req.body.nombre === "usuario1" || req.body.nombre === "usuarioA"){
+  res.json('Ya existe un usuario con ese nombre.');
+ }
+ else {
+  res.json({nombre});
+ }
 }
 
 );
