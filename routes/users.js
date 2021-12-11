@@ -1,4 +1,5 @@
 var express = require('express');
+const res = require('express/lib/response');
 var router = express.Router();
 
 /* GET users listing. */
@@ -9,16 +10,14 @@ router.get('/', function(req, res, next) {
   ])
 });
 
-/* POST new user. */
+/* POST insert new user. */
 router.post('/', function (req, res) {
  
-  var nombre = req.body.nombre || '';
+ var nombre = req.body.nombre || '';
+ res.json( {nombre: "usuario2"} );
 
-  res.send('{'
-          + nombre + 
-          + '}'
-  );
+}
 
-});
+);
 
 module.exports = router;
