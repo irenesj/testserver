@@ -39,8 +39,8 @@ router.get('/', function(req, res, next) {
   
   });
   
-  /* POST insert new user. */
-  router.post('/', function (req, res) {
+/* POST insert new user. */
+router.post('/', function (req, res) {
    
    var nombre = req.body.nombre || '';
   
