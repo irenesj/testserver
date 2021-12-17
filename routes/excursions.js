@@ -39,21 +39,21 @@ router.get('/', function(req, res, next) {
   
   });
   
-/* POST insert new user. */
+/* POST insert new excursion. */
 router.post('/', function (req, res) {
    
-   var nombre = req.body.nombre || '';
+   var name = req.body.name || '';
   
-   if(usuarios.includes(nombre)){
+   if(excursions.includes(name)){
   
-    res.status(409).json({error: 'Ya existe un usuario con ese nombre.'});
+    res.status(409).json({error: 'Ya existe una excursión con ese nombre.'});
   
    }
    else {
      
-    usuarios.push(nombre);
-    res.status(201).setHeader('Location', `http://localhost:3001/users/${nombre}`);
-    res.json({nombre});
+    excursions.push(name);
+    res.status(201).setHeader('Location', `http://localhost:3001/excursions/${name}`);
+    res.json({name});
     
    }
   }

@@ -3,35 +3,35 @@ const res = require('express/lib/response');
 var router = express.Router();
 
 /* Array to save users */
-var usuarios = [];
+var users = [];
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
 
-  const respuesta = usuarios.map(nombreUsuario => {
+  const response = users.map(userName => {
 
-    return {usuario: nombreUsuario}
+    return {user: userName}
   })
 
-  res.status(200).json(respuesta);
+  res.status(200).json(response);
 
 });
 
 /* POST insert new user. */
 router.post('/', function (req, res) {
  
- var nombre = req.body.nombre || '';
+ var name = req.body.name || '';
 
- if(usuarios.includes(nombre)){
+ if(users.includes(name)){
 
   res.status(409).json({error: 'Ya existe un usuario con ese nombre.'});
 
  }
  else {
    
-  usuarios.push(nombre);
-  res.status(201).setHeader('Location', `http://localhost:3001/users/${nombre}`);
-  res.json({nombre});
+  users.push(name);
+  res.status(201).setHeader('Location', `http://localhost:3001/users/${name}`);
+  res.json({name});
   
  }
 }
