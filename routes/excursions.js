@@ -6,27 +6,27 @@ var router = express.Router();
 var excursions = [
     
     {
-        nombre: "Oviedo",
-        zona: "Centro",
-        dificultad: "sencilla",
-        horas: 4,
-        descripcion: "Ver los sitios más importantes de la ciudad"
+        name: "Oviedo",
+        area: "Centro",
+        dificulty: "sencilla",
+        hours: 4,
+        description: "Ver los sitios más importantes de la ciudad"
 
     },
     {
-        nombre: "Parque natural del Ponga",
-        zona: "Este",
-        dificultad: "dificil",
-        horas: 5,
-        descripcion: "Ver los sitios más importantes del parque"
+        name: "Picos de Europa",
+        area: "Este",
+        dificulty: "dificil",
+        hours: 5,
+        description: "Ver los sitios más importantes del parque"
 
     },
     {
-        nombre: "Lastres",
-        zona: "Centro",
-        dificultad: "sencilla",
-        horas: 4,
-        descripcion: "Ver los sitios más importantes del pueblo"
+        name: "Lastres",
+        area: "Centro",
+        dificulty: "sencilla",
+        hours: 4,
+        description: "Ver los sitios más importantes del pueblo"
 
     }
 
@@ -35,6 +35,8 @@ var excursions = [
 /* GET excursions listing. */
 router.get('/', function(req, res, next) {
 
+
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.status(200).json(excursions);
   
   });
