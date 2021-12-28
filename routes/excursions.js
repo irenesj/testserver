@@ -8,25 +8,25 @@ var excursions = [
     {
         name: "Oviedo",
         area: "Centro",
-        dificulty: "sencilla",
+        dificulty: "Sencilla",
         hours: 4,
-        description: "Ver los sitios más importantes de la ciudad"
+        description: "En esta excursión veremos los sitios más importantes de la ciudad"
 
     },
     {
         name: "Picos de Europa",
         area: "Este",
-        dificulty: "dificil",
+        dificulty: "Difícil",
         hours: 5,
-        description: "Ver los sitios más importantes del parque"
+        description: "Pasearemos por las montañas de este parque"
 
     },
     {
         name: "Lastres",
         area: "Centro",
-        dificulty: "sencilla",
+        dificulty: "Sencilla",
         hours: 4,
-        description: "Ver los sitios más importantes del pueblo"
+        description: "Veremos los sitios más importantes del pueblo"
 
     }
 
