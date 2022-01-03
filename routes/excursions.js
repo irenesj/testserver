@@ -6,19 +6,11 @@ var router = express.Router();
 var excursions = [
     
     {
-        name: "Oviedo",
-        area: "Centro",
-        dificulty: "Sencilla",
-        hours: 4,
-        description: "En esta excursión veremos los sitios más importantes de la ciudad"
-
-    },
-    {
         name: "Picos de Europa",
         area: "Este",
-        dificulty: "Difícil",
-        hours: 5,
-        description: "Pasearemos por las montañas de este parque"
+        dificulty: "Media",
+        hours: "12",
+        description: "Al ser el parque tan extenso, en esta visita iremos a Los Lagos (itineriario corto) y pasaremos a ver también algo de la ruta del Cares."
 
     },
     {
@@ -26,7 +18,7 @@ var excursions = [
         area: "Centro",
         dificulty: "Sencilla",
         hours: 4,
-        description: "Veremos los sitios más importantes del pueblo"
+        description: "Veremos los sitios más importantes del pueblo."
 
     }
 
