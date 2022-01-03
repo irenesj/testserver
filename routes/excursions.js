@@ -10,7 +10,7 @@ var excursions = [
         area: "Este",
         dificulty: "Media",
         time: "1 día",
-        description: "Al ser el parque tan extenso, en esta visita iremos a Los Lagos (itineriario corto) y pasaremos a ver también algo de la ruta del Cares."
+        description: "Al ser un parque tan extenso, en esta visita iremos a Los Lagos (llevando el itineriario corto) y pasaremos a ver también algo de la ruta del Cares."
 
     },
     {
