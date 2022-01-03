@@ -9,7 +9,7 @@ var excursions = [
         name: "Picos de Europa",
         area: "Este",
         dificulty: "Media",
-        hours: "12",
+        time: "1 día",
         description: "Al ser el parque tan extenso, en esta visita iremos a Los Lagos (itineriario corto) y pasaremos a ver también algo de la ruta del Cares."
 
     },
@@ -17,7 +17,7 @@ var excursions = [
         name: "Lastres",
         area: "Centro",
         dificulty: "Sencilla",
-        hours: 4,
+        time: "4 horas",
         description: "Veremos los sitios más importantes del pueblo."
 
     }
