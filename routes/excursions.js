@@ -20,6 +20,14 @@ var excursions = [
         time: "4 horas",
         description: "Veremos los sitios más importantes del pueblo."
 
+    },
+    {
+        name: "Llanes",
+        area: "Centro",
+        dificulty: "Sencilla",
+        time: "4 horas",
+        description: "Veremos los sitios más importantes del pueblo."
+
     }
 
 ];
