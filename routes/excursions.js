@@ -35,6 +35,23 @@ var excursions = [
 /* GET excursions listing. */
 router.get('/', function(req, res, next) {
 
+    // falso || lo que sea => lo que sea
+    // true || lo que sea => true
+    // Si params da indefinido entonces metemos una cadena vacia
+    const search = req.params["q"] || "";
+
+
+    let searchResult = excursions.filter( excursion => (excursion.name).toLowerCase() == search.toString().toLowerCase() );
+
+    if(searchResult.length > 0){
+
+        console.log("Se ha encontrado el resultado");
+    }
+    else{
+
+        console.log("No se ha encontrado");
+    }
+
 
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.status(200).json(excursions);
