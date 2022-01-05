@@ -40,8 +40,10 @@ router.get('/', function(req, res, next) {
     // Si params da indefinido entonces metemos una cadena vacia
     const search = req.params["q"] || "";
 
+    console.log("Search: " + search);
 
-    let searchResult = excursions.filter( excursion => (excursion.name).toLowerCase() == search.toString().toLowerCase() );
+
+    let searchResult = excursions.filter( excursion => (excursion.name).toLowerCase() == search.toLowerCase() );
 
     if(searchResult.length > 0){
 
