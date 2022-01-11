@@ -42,18 +42,11 @@ router.get('/', function(req, res, next) {
 
     console.log("Search: " + search);
 
-
     let searchResult = excursions.filter( excursion => (excursion.name).toLowerCase() == search.toLowerCase() );
 
-    if(searchResult.length > 0){
-
+    if(searchResult.length > 0) 
         console.log("Se ha encontrado el resultado");
-    }
-    else{
-
-        console.log("No se ha encontrado");
-    }
-
+    console.log("No se ha encontrado");
 
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.status(200).json(excursions);
