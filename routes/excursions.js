@@ -37,19 +37,32 @@ router.get('/', function(req, res, next) {
 
     // falso || lo que sea => lo que sea
     // true || lo que sea => true
-    // Si params da indefinido entonces metemos una cadena vacia
-    const search = req.params["q"] || "";
+    // Si query da indefinido entonces metemos una cadena vacia
+    const search = req.query["q"] || "";
+
+    res.setHeader('Access-Control-Allow-Origin', '*'); //Primero mandar siempre cabeceras
 
     console.log("Search: " + search);
 
-    let searchResult = excursions.filter( excursion => (excursion.name).toLowerCase() == search.toLowerCase() );
+    if(search !== ""){
 
-    if(searchResult.length > 0) 
-        console.log("Se ha encontrado el resultado");
-    console.log("No se ha encontrado");
+        let searchResult = excursions.filter( excursion => (excursion.name).toLowerCase() == search.toLowerCase() );
+        console.log(searchResult); // 3 resultado y recibes 0.
+        res.status(200).json(searchResult);
 
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.status(200).json(excursions);
+        if(searchResult.length > 0) 
+            console.log("Se ha encontrado el resultado");
+        else
+            console.log("No se ha encontrado el resultado");
+
+    }
+    else{
+
+        res.status(200).json(excursions);
+
+    }
+    
+    
   
   });
   
