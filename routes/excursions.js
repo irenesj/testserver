@@ -42,18 +42,10 @@ router.get('/', function(req, res, next) {
 
     res.setHeader('Access-Control-Allow-Origin', '*'); //Primero mandar siempre cabeceras
 
-    console.log("Search: " + search);
-
     if(search !== ""){
 
         let searchResult = excursions.filter( excursion => (excursion.name).toLowerCase() == search.toLowerCase() );
-        console.log(searchResult); // 3 resultado y recibes 0.
         res.status(200).json(searchResult);
-
-        if(searchResult.length > 0) 
-            console.log("Se ha encontrado el resultado");
-        else
-            console.log("No se ha encontrado el resultado");
 
     }
     else{
@@ -61,8 +53,6 @@ router.get('/', function(req, res, next) {
         res.status(200).json(excursions);
 
     }
-    
-    
   
   });
   
