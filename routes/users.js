@@ -13,7 +13,7 @@ var users = [
     password: "udfgsdufg",
     city: "Madrid",
     community: "Madrid",
-    Province: "Madrid",
+    province: "Madrid",
     postalCode: "28000"
 
   },
@@ -25,7 +25,7 @@ var users = [
     password: "hcbdjfjbhkj",
     city: "Orense",
     community: "Galicia",
-    Province: "Orense",
+    province: "Orense",
     postalCode: "29000"
 
   }
