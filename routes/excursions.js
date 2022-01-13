@@ -32,17 +32,14 @@ var excursions = [
 
 ];
 
-/* GET excursions listing. */
+/* GET */
 router.get('/', function(req, res, next) {
 
-    // falso || lo que sea => lo que sea
-    // true || lo que sea => true
-    // Si query da indefinido entonces metemos una cadena vacia
     const search = req.query["q"] || "";
 
-    res.setHeader('Access-Control-Allow-Origin', '*'); //Primero mandar siempre cabeceras
+    res.setHeader('Access-Control-Allow-Origin', '*'); 
 
-    if(search !== ""){
+    if(search !== ""){ 
 
         let searchResult = excursions.filter( excursion => (excursion.name).toLowerCase() == search.toLowerCase() );
         res.status(200).json(searchResult);
@@ -56,7 +53,7 @@ router.get('/', function(req, res, next) {
   
   });
   
-/* POST insert new excursion. */
+/* POST */
 router.post('/', function (req, res) {
    
    var name = req.body.name || '';
