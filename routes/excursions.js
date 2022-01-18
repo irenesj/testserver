@@ -7,10 +7,10 @@ var excursions = [
     
     {
         name: "Lastres",
-        area: "Centro",
+        area: "Centro-Este",
         dificulty: "Baja",
         time: "4 horas",
-        description: "Veremos los sitios más importantes del pueblo."
+        description: "En esta excursión visitaremos el caso histórico y el faro Luces."
 
     },
     {
@@ -20,16 +20,7 @@ var excursions = [
         time: "1 día",
         description: "Al ser un parque tan extenso, en esta visita iremos a Los Lagos (llevando el itineriario corto) y pasaremos a ver también algo de la ruta del Cares."
 
-    },
-    {
-        name: "Llanes",
-        area: "Centro",
-        dificulty: "Baja",
-        time: "4 horas",
-        description: "Veremos los sitios más importantes del pueblo."
-
     }
-
 ];
 
 /* GET */
