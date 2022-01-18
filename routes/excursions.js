@@ -6,19 +6,19 @@ var router = express.Router();
 var excursions = [
     
     {
-        name: "Picos de Europa",
-        area: "Este",
-        dificulty: "Alta",
-        time: "1 día",
-        description: "Al ser un parque tan extenso, en esta visita iremos a Los Lagos (llevando el itineriario corto) y pasaremos a ver también algo de la ruta del Cares."
-
-    },
-    {
         name: "Lastres",
         area: "Centro",
         dificulty: "Baja",
         time: "4 horas",
         description: "Veremos los sitios más importantes del pueblo."
+
+    },
+    {
+        name: "Picos de Europa",
+        area: "Este",
+        dificulty: "Alta",
+        time: "1 día",
+        description: "Al ser un parque tan extenso, en esta visita iremos a Los Lagos (llevando el itineriario corto) y pasaremos a ver también algo de la ruta del Cares."
 
     },
     {
