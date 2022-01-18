@@ -6,14 +6,6 @@ var router = express.Router();
 var excursions = [
     
     {
-        name: "Lastres",
-        area: "Centro-Este",
-        dificulty: "Baja",
-        time: "4 horas",
-        description: "En esta excursión visitaremos el caso histórico y el faro Luces."
-
-    },
-    {
         name: "Picos de Europa",
         area: "Este",
         dificulty: "Alta",
