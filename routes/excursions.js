@@ -10,7 +10,7 @@ var excursions = [
         area: "Centro-Este",
         dificulty: "Baja",
         time: "1 día",
-        description: "En Cangas iremos a ver el puente y haremos una ruta por sus iglesias."
+        description: "En Cangas, iremos a ver el puente romano y haremos una ruta por sus iglesias."
 
     },
     {
