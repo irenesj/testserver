@@ -6,13 +6,22 @@ var router = express.Router();
 var excursions = [
     
     {
+        name: "Cangas de Onís",
+        area: "Centro-Este",
+        dificulty: "Baja",
+        time: "1 día",
+        description: "En Cangas iremos a ver el puente y haremos una ruta por sus iglesias."
+
+    },
+    {
         name: "Picos de Europa",
         area: "Este",
-        dificulty: "Alta",
-        time: "1 día",
+        dificulty: "Media",
+        time: "2 días",
         description: "Al ser un parque tan extenso, en esta visita iremos a Los Lagos (llevando el itineriario corto) y pasaremos a ver también algo de la ruta del Cares."
 
     }
+
 ];
 
 /* GET */
