@@ -6,6 +6,7 @@ var router = express.Router();
 var excursions = [
     
     {
+        id: 0,
         name: "Cangas de Onís",
         area: "Centro-Este",
         dificulty: "Baja",
@@ -14,6 +15,7 @@ var excursions = [
 
     },
     {
+        id: 1,
         name: "Picos de Europa",
         area: "Este",
         dificulty: "Media",
