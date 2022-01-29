@@ -10,11 +10,7 @@ var users = [
     surname: "apellidosUsuario1",
     phone: "11111111",
     mail: "usuario1@mail.com",
-    password: "udfgsdufg",
-    city: "Madrid",
-    community: "Madrid",
-    province: "Madrid",
-    postalCode: "28000"
+    password: "udfgsdufg"
 
   },
   {
@@ -22,11 +18,7 @@ var users = [
     surname: "apellidosUsuario2",
     phone: "11111111",
     mail: "usuario2@mail.com",
-    password: "hcbdjfjbhkj",
-    city: "Orense",
-    community: "Galicia",
-    province: "Orense",
-    postalCode: "29000"
+    password: "hcbdjfjbhkj"
 
   }
 ];
