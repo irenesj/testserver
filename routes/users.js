@@ -6,6 +6,7 @@ var router = express.Router();
 var users = [
 
   {
+    id: 0,
     name: "usuario1",
     surname: "apellidosUsuario1",
     phone: "11111111",
@@ -14,6 +15,7 @@ var users = [
 
   },
   {
+    id: 1,
     name: "usuario2",
     surname: "apellidosUsuario2",
     phone: "11111111",
@@ -22,6 +24,8 @@ var users = [
 
   }
 ];
+
+let counter = 2; 
 
 /* GET */
 router.get('/', function(req, res, next) {
@@ -38,20 +42,26 @@ router.get('/', function(req, res, next) {
 /* POST */
 router.post('/', function (req, res) {
  
- var name = req.body.name || '';
+  var {name} = req.body;
 
- if(users.includes(name)){
-
-  res.status(409).json({error: 'Ya existe un usuario con ese nombre.'});
-
- }
- else {
-   
-  users.push(name);
-  res.status(201).setHeader('Location', `http://localhost:3001/users/${name}`);
-  res.json({name});
+  let arrayResult = users.filter(user => (user.name).toLowerCase() == name.toLowerCase()) 
   
- }
+  if(arrayResult.length > 0){
+    res.status(409).json({error: 'Ya existe un usuario con ese nombre.'});
+  }
+  else {
+   // restful -> recurso, recurso/id
+   const user = {
+    
+      ...req.body,
+      id: counter
+
+    };
+    users.push(user);
+    res.status(201).setHeader('Location', `http://localhost:3001/users/${counter}`);
+    counter++;
+    res.json(user);
+  }
 }
 
 );
