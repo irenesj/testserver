@@ -66,4 +66,15 @@ router.post('/', function (req, res) {
 
 );
 
+/** OPTIONS */
+router.options('/', function(req, res){
+  
+  res.status(200);
+  res.setHeader('Access-Control-Allow-Origin','*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+  res.send();
+
+}
+);
+
 module.exports = router;
