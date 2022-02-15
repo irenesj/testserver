@@ -25,7 +25,20 @@ var users = [
   }
 ];
 
+var tokens = {
+
+  "9387tb8gun48": "usuario1"
+  
+};
+
 let counter = 2; 
+
+const generateToken = () => {
+
+  const arrayNumLetAvalaible = [];
+  return Math.floor(Math.random() * (max - min)) + min;
+  
+}
 
 /* GET */
 router.get('/', function(req, res, next) {
