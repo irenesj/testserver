@@ -25,12 +25,14 @@ var users = [
   }
 ];
 
+/** Array of tokens */
 var tokens = {
 
   "9387tb8gun": "usuario1"
   
 };
 
+/** Counter for users's id */
 let counter = 2; 
 
 // This function generates a token with 10 random letters and numbers
