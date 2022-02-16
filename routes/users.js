@@ -38,11 +38,11 @@ let counter = 2;
 // This function generates a token with 10 random letters and numbers
 const generateToken = () => {
 
-  var avalaibleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const avalaibleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   const length = 10;
-  var token = '';
+  let token = '';
 
-  for ( var i = 0; i < length; i++ ) {
+  for ( let i = 0; i < length; i++ ) {
     token += avalaibleChars.charAt(Math.floor(Math.random() * avalaibleChars.length));
   }
 
