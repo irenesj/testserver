@@ -27,16 +27,24 @@ var users = [
 
 var tokens = {
 
-  "9387tb8gun48": "usuario1"
+  "9387tb8gun": "usuario1"
   
 };
 
 let counter = 2; 
 
+// This function generates a token with 10 random letters and numbers
 const generateToken = () => {
 
-  const arrayNumLetAvalaible = [];
-  return Math.floor(Math.random() * (max - min)) + min;
+  var avalaibleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const length = 10;
+  var token = '';
+
+  for ( var i = 0; i < length; i++ ) {
+    token += avalaibleChars.charAt(Math.floor(Math.random() * avalaibleChars.length));
+  }
+
+  return token;
   
 }
 
