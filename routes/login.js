@@ -24,7 +24,27 @@ const generateToken = () => {
 /** LOGIN */
 router.post('/', function(req, res){
 
-    const token = generateToken();
+  const { mail, password } = req.body;
+
+  let arrayResult = users.filter(user => user.mail.toLowerCase() == mail.toLowerCase() && user.password == password); 
+  
+  if(arrayResult.length == 0){
+    res.status(401).json({error: 'Has puesto unos datos erróneos. Inténtalo de nuevo.'});
+  }
+  else {
+   // restful -> recurso, recurso/id
+   const  t = {
+    
+      ...req.body,
+      
+
+    };
+    users.push(user);
+    res.status(201).setHeader('Location', `http://localhost:3001/users/${counter}`);
+    counter++;
+    res.json(user);
+
+  const token = generateToken();
 
 })
 

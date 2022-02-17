@@ -22,7 +22,7 @@ let counter = 2;
 /* POST */
 router.post('/', function (req, res) {
  
-  var {name} = req.body;
+  const {name} = req.body;
 
   let arrayResult = users.filter(user => (user.name).toLowerCase() == name.toLowerCase()) 
   
