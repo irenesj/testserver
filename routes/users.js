@@ -1,54 +1,8 @@
 var express = require('express');
 const res = require('express/lib/response');
 var router = express.Router();
+var users = require('../data/users');
 
-/* Array to save users */
-var users = [
-
-  {
-    id: 0,
-    name: "usuario1",
-    surname: "apellidosUsuario1",
-    phone: "11111111",
-    mail: "usuario1@mail.com",
-    password: "udfgsdufg"
-
-  },
-  {
-    id: 1,
-    name: "usuario2",
-    surname: "apellidosUsuario2",
-    phone: "11111111",
-    mail: "usuario2@mail.com",
-    password: "hcbdjfjbhkj"
-
-  }
-];
-
-/** Array of tokens */
-var tokens = {
-
-  "9387tb8gun": "usuario1"
-  
-};
-
-/** Counter for users's id */
-let counter = 2; 
-
-// This function generates a token with 10 random letters and numbers
-const generateToken = () => {
-
-  const avalaibleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  const length = 10;
-  let token = '';
-
-  for ( let i = 0; i < length; i++ ) {
-    token += avalaibleChars.charAt(Math.floor(Math.random() * avalaibleChars.length));
-  }
-
-  return token;
-  
-}
 
 /* GET */
 router.get('/', function(req, res, next) {
@@ -61,6 +15,9 @@ router.get('/', function(req, res, next) {
   res.status(200).json(response);
 
 });
+
+/** Counter for users's id */
+let counter = 2; 
 
 /* POST */
 router.post('/', function (req, res) {
