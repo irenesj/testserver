@@ -5,9 +5,9 @@ var users = require('../data/users');
 var tokens = require('../data/tokens');
   
   
-  // This function generates a token with 10 random letters and numbers
-  const generateToken = () => {
-  
+// This function generates a token with 10 random letters and numbers
+const generateToken = () => {
+
     const avalaibleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     const length = 10;
     let token = '';
@@ -18,7 +18,7 @@ var tokens = require('../data/tokens');
   
     return token;
     
-  }
+}
 
 
 /** LOGIN */
