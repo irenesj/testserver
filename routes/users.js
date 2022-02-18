@@ -30,7 +30,7 @@ router.post('/', function (req, res) {
     res.status(409).json({error: 'Ya existe un usuario con ese nombre.'});
   }
   else {
-   // restful -> recurso, recurso/id
+   
    const user = {
     
       ...req.body,
