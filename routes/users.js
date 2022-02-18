@@ -1,7 +1,7 @@
 var express = require('express');
 const res = require('express/lib/response');
 var router = express.Router();
-var users = require('../data/users');
+var users = require('../data/usersData');
 
 
 /* GET */

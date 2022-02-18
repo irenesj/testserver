@@ -1,7 +1,7 @@
 var express = require('express');
 const res = require('express/lib/response');
 var router = express.Router();
-var excursions = require('../data/excursions');
+var excursions = require('../data/excursionsData');
 
 /* GET */
 router.get('/', function(req, res, next) {
