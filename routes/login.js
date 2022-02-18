@@ -1,15 +1,15 @@
 var express = require('express');
 const res = require('express/lib/response');
 var router = express.Router();
-var users = require('../data/users');
-var tokens = require('../data/tokens');
+var users = require('../data/usersData');
+var tokens = require('../data/tokensData');
   
   
 // This function generates a token with 10 random letters and numbers
 const generateToken = () => {
 
     const avalaibleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const length = 10;
+    const length = 40;
     let token = '';
   
     for ( let i = 0; i < length; i++ ) {
@@ -20,7 +20,6 @@ const generateToken = () => {
     
 }
 
-
 /** LOGIN */
 router.post('/', function(req, res){
 
@@ -29,22 +28,18 @@ router.post('/', function(req, res){
   let arrayResult = users.filter(user => user.mail.toLowerCase() == mail.toLowerCase() && user.password == password); 
   
   if(arrayResult.length == 0){
-    res.status(401).json({error: 'Has puesto unos datos erróneos. Inténtalo de nuevo.'});
+    res.status(401).json({error: 'Datos erróneos. Inténtalo de nuevo.'});
   }
   else {
-   // restful -> recurso, recurso/id
-   const  t = {
-    
-      ...req.body,
-      
 
-    };
-    users.push(user);
+   /* users.push(user);
     res.status(201).setHeader('Location', `http://localhost:3001/users/${counter}`);
     counter++;
-    res.json(user);
+    res.json(user);*/
 
   const token = generateToken();
 
-})
+  }
+}
+);
 
