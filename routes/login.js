@@ -36,7 +36,6 @@ router.post('/', function(req, res){
   else {
 
     const token = generateToken();
-    // Object.freeze(tokens)
     tokens[token] = arrayResult[0].name;
     console.log(tokens);
     res.status(200).setHeader('Location', `http://localhost:3001/login`);
