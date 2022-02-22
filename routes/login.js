@@ -1,11 +1,12 @@
-var express = require('express');
+const express = require('express');
 const res = require('express/lib/response');
-var router = express.Router();
-var users = require('../data/usersData');
-var tokens = require('../data/tokensData');
+const router = express.Router();
+const users = require('../data/usersData');
+const tokens = require('../data/tokensData'); // const: la referencia no se cambia, es decir, no se puede apuntar a otro sitio
+const filter = require('jade/lib/filters');
   
   
-// This function generates a token with 10 random letters and numbers
+// This function generates a token with 40 random letters and numbers
 const generateToken = () => {
 
     const avalaibleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -20,12 +21,12 @@ const generateToken = () => {
     
 }
 
-/** Endpoint for the LOGIN */
+/** LOGIN */
 router.post('/', function(req, res){
 
   const { mail, password } = req.body;
 
-  let arrayResult = users.filter(user => user.mail.toLowerCase() == mail.toLowerCase() && user.password == password); 
+  const arrayResult = users.filter(user => user.mail.toLowerCase() == mail.toLowerCase() && user.password == password); 
   
   if(arrayResult.length == 0){
 
@@ -35,9 +36,11 @@ router.post('/', function(req, res){
   else {
 
     const token = generateToken();
-    tokens.push(token);
+    // Object.freeze(tokens)
+    tokens[token] = arrayResult[0].name;
+    console.log(tokens);
     res.status(200).setHeader('Location', `http://localhost:3001/login`);
-    res.json(token);
+    res.json({ token: token});
 
   }
 }
