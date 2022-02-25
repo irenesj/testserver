@@ -6,7 +6,7 @@ var excursions = [
         name: "Cangas de Onís",
         area: "Centro-Este",
         dificulty: "Baja",
-        time: "1 día",
+        time: "6 horas",
         description: "En Cangas, iremos a ver el puente romano y haremos una ruta por sus iglesias."
 
     },
