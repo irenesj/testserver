@@ -39,7 +39,13 @@ router.post('/', function(req, res){
     tokens[token] = arrayResult[0].name;
     console.log(tokens);
     res.status(200).setHeader('Location', `http://localhost:3001/login`);
-    res.json({ token: token});
+
+    const userCopy = {
+      ...arrayResult[0]
+    }
+
+    delete userCopy["password"];
+    res.json({ token: token, user: userCopy });
 
   }
 }
