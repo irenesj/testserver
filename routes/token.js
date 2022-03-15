@@ -1,6 +1,7 @@
 const express = require('express');
 const res = require('express/lib/response');
 const router = express.Router();
+const users = require('../data/usersData');
 const tokens = require('../data/tokensData');
 
 router.get('/:token', function(req, res){
@@ -10,7 +11,9 @@ router.get('/:token', function(req, res){
     //  200 204, si currentToken está en tokens => token válido
     if(currentToken in tokens) {
 
-        res.status(204).send();
+        const userName = tokens[currentToken];
+        //const user = users[];
+        res.status(204).json({"user" : user});
 
     }
      // y si no => token no válido
