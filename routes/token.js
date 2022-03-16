@@ -12,7 +12,7 @@ router.get('/:token', function(req, res){
     if(currentToken in tokens) {
 
         const userName = tokens[currentToken];
-        const user = users.filter(user => (user.name).toLowerCase() == userName.toLowerCase()) 
+        const user = users.filter( user => (user.name) == userName ) 
         res.status(204).json({"user" : user});
 
     }
