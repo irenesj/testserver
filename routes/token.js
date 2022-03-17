@@ -4,6 +4,7 @@ const router = express.Router();
 const users = require('../data/usersData');
 const tokens = require('../data/tokensData');
 
+// https://localhost:3001/token/
 router.get('/:token', function(req, res){
 
     const currentToken = req.params["token"];
@@ -12,8 +13,9 @@ router.get('/:token', function(req, res){
     if(currentToken in tokens) {
 
         const userName = tokens[currentToken];
-        const user = users.filter( user => (user.name) == userName ) 
-        res.status(204).json({ "user" : user });
+        const arrayUser = users.filter( user => (user.name) == userName );
+        const user = arrayUser[0]; 
+        res.status(200).json({ "user" : user });
 
     }
      // y si no => token no válido
