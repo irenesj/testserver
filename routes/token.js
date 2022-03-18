@@ -14,8 +14,13 @@ router.get('/:token', function(req, res){
 
         const userName = tokens[currentToken];
         const arrayUser = users.filter( user => (user.name) == userName );
-        const user = arrayUser[0]; 
-        res.status(200).json({ "user" : user });
+        const userCopy = {
+            ...arrayUser[0]
+          }
+      
+        delete userCopy["password"];
+
+        res.status(200).json({ "user" : userCopy });
 
     }
      // y si no => token no válido
