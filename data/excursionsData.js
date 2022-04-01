@@ -15,8 +15,17 @@ var excursions = [
         name: "Picos de Europa",
         area: "Este",
         dificulty: "Media",
-        time: "1 día",
+        time: "2 días",
         description: "Al ser un parque tan extenso, en esta visita iremos a Los Lagos (llevando el itineriario corto) y pasaremos a ver también algo de la ruta del Cares."
+
+    },
+    {
+        id: 2,
+        name: "Picos de Europa",
+        area: "Este",
+        dificulty: "Media",
+        time: "3 días",
+        description: "En esta excursión iremos hasta Vegarredonda y el mirador de Ordiales."
 
     }
 
