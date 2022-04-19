@@ -1,7 +1,9 @@
 const express = require('express');
+const req = require('express/lib/request');
 const res = require('express/lib/response');
 const router = express.Router();
 const users = require('../data/usersData');
+const { validToken, arrayResult } = require('/helpers'); 
 
 
 /* GET */
@@ -24,7 +26,7 @@ router.post('/', function (req, res) {
  
   const {name} = req.body;
 
-  let arrayResult = users.filter(user => (user.name).toLowerCase() == name.toLowerCase()) 
+  let arrayResult = arrayResult(user => (user.name).toLowerCase() == name.toLowerCase());
   
   if(arrayResult.length > 0){
     res.status(409).json({error: 'Ya existe un usuario con ese nombre.'});
@@ -46,12 +48,52 @@ router.post('/', function (req, res) {
 
 );
 
+/** PUT */
+router.put('/:mail', function(req,res, next){
+
+  // compruebo si tiene token y si pertenece al usuario 
+  // mal => 401
+  // bien => next
+  const currentToken = validToken();
+
+  if(currentToken && arrayResult(user => (user.mail).toLowerCase() == mail.toLowerCase())){
+
+
+  }
+
+});
+
+router.put('/:mail', function(req,res){
+
+  const mail = req.params["mail"];
+
+  let currentArray = users.filter(user => (user.mail).toLowerCase() == mail.toLowerCase());
+
+  if(currentArray.length > 0){
+
+    const user = currentArray[0];
+
+    user.name = req.body["name"];
+    res.status(200).send();
+
+  }
+  else{
+
+    res.status(401).json({error: 'Error'});
+
+  }
+
+});
+
+  
+
+
 /** OPTIONS */
 router.options('/', function(req, res){
   
   res.status(200);
   res.setHeader('Access-Control-Allow-Origin','*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT, OPTIONS');
   res.send();
 
 }
