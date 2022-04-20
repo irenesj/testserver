@@ -54,7 +54,6 @@ router.post('/', function(req, res){
 /** LOGOUT */
 router.delete('/', function(req, res, next){
 
-  //const token = req.headers.authorization.substring(7, req.headers.authorization.length);
   const token = req.headers.authorization.substring("Bearer ".length);
   console.log(token);
   delete tokens[token];

@@ -9,9 +9,9 @@ const { validToken } = require('../helpers/helpers');
 /* GET */
 router.get('/', function(req, res, next) {
 
-  const response = users.map(userName => {
+  const response = users.map(userMail => {
 
-    return {user: userName}
+    return {user: userMail}
   })
 
   res.status(200).json(response);
@@ -24,12 +24,12 @@ let counter = 2;
 /* POST */
 router.post('/', function (req, res) {
  
-  const { name } = req.body;
+  const { mail } = req.body;
 
-  let arrayResult = users.filter(user => (user.name).toLowerCase() == name.toLowerCase());
+  let arrayResult = users.filter(user => (user.mail).toLowerCase() == mail.toLowerCase());
   
   if(arrayResult.length > 0){
-    res.status(409).json({error: 'Ya existe un usuario con ese nombre.'});
+    res.status(409).json({error: 'Ya existe un usuario con ese correo electrónico.'});
   }
   else {
    
