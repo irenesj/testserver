@@ -3,7 +3,7 @@ const req = require('express/lib/request');
 const res = require('express/lib/response');
 const router = express.Router();
 const users = require('../data/usersData');
-const { validToken, arrayResult } = require('/helpers'); 
+const { validToken } = require('../helpers/helpers'); 
 
 
 /* GET */
@@ -24,9 +24,9 @@ let counter = 2;
 /* POST */
 router.post('/', function (req, res) {
  
-  const {name} = req.body;
+  const { name } = req.body;
 
-  let arrayResult = arrayResult(user => (user.name).toLowerCase() == name.toLowerCase());
+  let arrayResult = users.filter(user => (user.name).toLowerCase() == name.toLowerCase());
   
   if(arrayResult.length > 0){
     res.status(409).json({error: 'Ya existe un usuario con ese nombre.'});
@@ -56,14 +56,21 @@ router.put('/:mail', function(req,res, next){
   // bien => next
   const currentToken = validToken();
 
-  if(currentToken && arrayResult(user => (user.mail).toLowerCase() == mail.toLowerCase())){
+  if(currentToken && users.filter(user => (user.mail).toLowerCase() == mail.toLowerCase())){
 
+
+    res.status(200).send();
+
+  }
+  else{
+
+    res.status(401).send();
 
   }
 
 });
 
-router.put('/:mail', function(req,res){
+/*router.put('/:mail', function(req,res){
 
   const mail = req.params["mail"];
 
@@ -83,7 +90,7 @@ router.put('/:mail', function(req,res){
 
   }
 
-});
+});*/
 
   
 

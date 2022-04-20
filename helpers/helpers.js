@@ -6,16 +6,9 @@ const validToken = () => {
 
 }
 
-const arrayResult = (arraySearch) => {
-
-
-    return users.filter(arraySearch);
-
-}
-
 
 module.exports = {
 
     validToken,
-    arrayResult
+    
 }
