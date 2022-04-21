@@ -12,8 +12,8 @@ router.get('/:token', function(req, res){
     //  200 204, si currentToken está en tokens => token válido
     if(currentToken in tokens) {
 
-        const userName = tokens[currentToken];
-        const arrayUser = users.filter( user => (user.name) == userName );
+        const userMail = tokens[currentToken];
+        const arrayUser = users.filter( user => (user.mail) == userMail );
         const userCopy = {
             ...arrayUser[0]
           }

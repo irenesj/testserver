@@ -1,8 +1,9 @@
 const users = require('../data/usersData');
+const tokens = require('../data/tokensData');
 
-const validToken = () => {
+const validToken = (authorizationString) => {
 
-    return token = req.headers.authorization.substring("Bearer ".length);
+    return authorizationString in tokens;
 
 }
 

@@ -49,17 +49,24 @@ router.post('/', function (req, res) {
 );
 
 /** PUT */
-router.put('/:mail', function(req,res, next){
+router.put('/:mail', function(req, res, next){
 
   // compruebo si tiene token y si pertenece al usuario 
-  // mal => 401
-  // bien => next
-  const currentToken = validToken();
+  if(!req.headers.authorization){
 
-  if(currentToken && users.filter(user => (user.mail).toLowerCase() == mail.toLowerCase())){
+    res.status(401).send();
+    return;
 
+  }
+  const currentToken = validToken(req.headers.authorization.substring("Bearer ".length));
+  const currentMail = req.params["mail"];
+  const currentUser = users.filter(user => (user.mail).toLowerCase() == currentMail.toLowerCase());
 
-    res.status(200).send();
+  if(currentToken && currentUser[0]){
+
+    console.log(req.body);
+    Object.assign(currentUser[0], req.body);
+    res.status(200).json(currentUser[0]);
 
   }
   else{
@@ -69,31 +76,6 @@ router.put('/:mail', function(req,res, next){
   }
 
 });
-
-/*router.put('/:mail', function(req,res){
-
-  const mail = req.params["mail"];
-
-  let currentArray = users.filter(user => (user.mail).toLowerCase() == mail.toLowerCase());
-
-  if(currentArray.length > 0){
-
-    const user = currentArray[0];
-
-    user.name = req.body["name"];
-    res.status(200).send();
-
-  }
-  else{
-
-    res.status(401).json({error: 'Error'});
-
-  }
-
-});*/
-
-  
-
 
 /** OPTIONS */
 router.options('/', function(req, res){

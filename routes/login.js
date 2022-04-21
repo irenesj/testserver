@@ -36,7 +36,7 @@ router.post('/', function(req, res){
   else {
 
     const token = generateToken();
-    tokens[token] = arrayResult[0].name;
+    tokens[token] = arrayResult[0].mail;
     console.log(tokens);
     res.status(200).setHeader('Location', `http://localhost:3001/login`);
 
