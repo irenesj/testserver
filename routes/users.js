@@ -48,7 +48,7 @@ router.post('/', function (req, res) {
 
 );
 
-/** PUT */
+/** PUT for updating user info */
 router.put('/:mail', function(req, res, next){
 
   // compruebo si tiene token y si pertenece al usuario 
@@ -76,6 +76,35 @@ router.put('/:mail', function(req, res, next){
   }
 
 });
+
+/** PUT for updating the users's excursions lists */
+router.put('/:mail/excursions/:id', function(req, res, next){
+
+   // compruebo si tiene token y si pertenece al usuario 
+   if(!req.headers.authorization){
+
+    res.status(401).send();
+    return;
+
+  }
+  const currentToken = validToken(req.headers.authorization.substring("Bearer ".length));
+  const currentMail = req.params["mail"];
+  const currentUser = users.filter(user => (user.mail).toLowerCase() == currentMail.toLowerCase());
+
+  if(currentToken && currentUser[0]){
+
+    console.log(req.body);
+    currentUser[0].excursions.push(parseInt(req.params["id"]));
+    res.status(200).json(currentUser[0]);  
+
+  }
+  else{
+
+    res.status(401).send();
+
+  }
+
+})
 
 /** OPTIONS */
 router.options('/', function(req, res){

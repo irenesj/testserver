@@ -7,7 +7,8 @@ var users = [
       surname: "apellidosUsuario1",
       phone: "11111111",
       mail: "usuario1@mail.com",
-      password: "123456qw"
+      password: "123456qw",
+      excursions: []
   
     },
     {
@@ -16,7 +17,8 @@ var users = [
       surname: "apellidosUsuario2",
       phone: "11111111",
       mail: "usuario2@mail.com",
-      password: "123456qr"
+      password: "123456qr",
+      excursions: []
   
     }
   ];
