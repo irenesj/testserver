@@ -66,6 +66,7 @@ router.put('/:mail', function(req, res, next){
 
     console.log(req.body);
     Object.assign(currentUser[0], req.body);
+    delete currentUser[0]["password"];
     res.status(200).json(currentUser[0]);
 
   }

@@ -43,8 +43,8 @@ router.post('/', function(req, res){
     const userCopy = {
       ...arrayResult[0]
     }
-
     delete userCopy["password"];
+    
     res.json({ token: token, user: userCopy });
 
   }
