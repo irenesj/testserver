@@ -21,7 +21,7 @@ router.get('/', function(req, res, next) {
 /** Counter for users's id */
 let counter = 2; 
 
-/* POST */
+/* POST for creating a new user*/
 router.post('/', function (req, res) {
  
   const { mail } = req.body;
@@ -36,6 +36,7 @@ router.post('/', function (req, res) {
    const user = {
     
       ...req.body,
+      excursions: [],
       id: counter
 
     };
