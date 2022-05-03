@@ -37,7 +37,6 @@ router.post('/', function(req, res){
 
     const token = generateToken();
     tokens[token] = arrayResult[0].mail;
-    console.log(tokens);
     res.status(200).setHeader('Location', `http://localhost:3001/login`);
 
     const userCopy = {
@@ -55,7 +54,6 @@ router.post('/', function(req, res){
 router.delete('/', function(req, res, next){
 
   const token = req.headers.authorization.substring("Bearer ".length);
-  console.log(token);
   delete tokens[token];
   res.status(200);
   res.json({
