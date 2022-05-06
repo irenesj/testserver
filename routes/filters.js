@@ -11,27 +11,33 @@ const filtersData = require('../data/excursionsData');
 // http://localhost:3001/filters?type=time
 router.get('/', function(req, res, next){
 
+    let arrayResult = [];
     const filter = req.query["type"] || "";
     
     if(["area", "difficulty", "time"].includes(filter)){
 
-        const arrayResult = filtersData.map(function(excursion){
+        arrayResult = filtersData.map(function(excursion){
 
             switch(filter){
 
-                case 'area':
+                case 'area': 
+                    if(!arrayResult.includes(excursion.area))
+                        arrayResult.push(excursion.area);
+                        console.log(arrayResult);
                     break;
-                case 'difficulty':
+                case 'difficulty': 
+                    if(!arrayResult.includes(excursion.difficulty))
+                        arrayResult.push(excursion.difficulty);
                     break;
-                case 'time':
+                case 'time': 
+                    if(!arrayResult.includes(excursion.time))
+                        arrayResult.push(excursion.time);
 
-
-            }
-                
-
+            }   
+               
         });
-        res.status(200).json();
-
+        
+        return res.status(200).json(arrayResult);
     }
     else{
 
