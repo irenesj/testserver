@@ -11,7 +11,9 @@ const filtersData = require('../data/excursionsData');
 // http://localhost:3001/filters?type=time
 router.get('/', function(req, res, next){
 
+    
     let arrayResult = [];
+    let arrayResultCopy = [];
     const filter = req.query["type"] || "";
     
     if(["area", "difficulty", "time"].includes(filter)){
@@ -23,7 +25,6 @@ router.get('/', function(req, res, next){
                 case 'area': 
                     if(!arrayResult.includes(excursion.area))
                         arrayResult.push(excursion.area);
-                        console.log(arrayResult);
                     break;
                 case 'difficulty': 
                     if(!arrayResult.includes(excursion.difficulty))
@@ -34,10 +35,11 @@ router.get('/', function(req, res, next){
                         arrayResult.push(excursion.time);
 
             }   
-               
+            arrayResultCopy = arrayResult.valueOf();   
         });
+
+        res.status(200).json(arrayResultCopy);
         
-        return res.status(200).json(arrayResult);
     }
     else{
 
@@ -45,6 +47,17 @@ router.get('/', function(req, res, next){
 
     }
 })
+
+/** OPTIONS */
+router.options('/', function(req, res){
+  
+    res.status(200);
+    res.setHeader('Access-Control-Allow-Origin','*');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT, OPTIONS');
+    res.send();
+  
+  }
+);
 
 
 module.exports = router;
