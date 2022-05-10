@@ -26,6 +26,8 @@ router.post('/', function(req, res){
 
   const { mail, password } = req.body;
 
+console.log(users);
+
   const arrayResult = users.filter(user => user.mail.toLowerCase() == mail.toLowerCase() && user.password == password); 
   
   if(arrayResult.length == 0){
