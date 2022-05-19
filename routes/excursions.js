@@ -7,22 +7,45 @@ const excursions = require('../data/excursionsData');
 router.get('/', function(req, res, next) {
 
     const search = req.query["q"] || "";
+    const area = req.query["area"] || "";
+    const difficulty = req.query["difficulty"] || "";
+    const time = req.query["time"] || "";
 
     res.setHeader('Access-Control-Allow-Origin', '*'); 
+    let excursionsCopy = [...excursions];
 
     if(search !== ""){ 
 
-        let searchResult = excursions.filter( excursion => (excursion.name).toLowerCase() == search.toLowerCase() );
-        res.status(200).json(searchResult);
+        excursionsCopy = excursionsCopy.filter( excursion => (excursion.name).toLowerCase() == search.toLowerCase() );
 
     }
-    else{
 
-        res.status(200).json(excursions);
+    if(area != ""){
+
+        const areaFiltersResults = area.split(',').map(i => i.trim().toLowerCase());
+        excursionsCopy = excursionsCopy.filter(excursion => areaFiltersResults.includes(excursion.area.toLowerCase()))
 
     }
+
+    if(difficulty != ""){
+
+        const difficultyFiltersResults = difficulty.split(',').map(i => i.trim().toLowerCase());
+        excursionsCopy = excursionsCopy.filter(excursion => difficultyFiltersResults.includes(excursion.difficulty.toLowerCase()))
+
+    }
+
+    if(time != ""){
+
+        const timeFiltersResults = time.split(',').map(i => i.trim().toLowerCase());
+        excursionsCopy = excursionsCopy.filter(excursion => timeFiltersResults.includes(excursion.time.toLowerCase()))
+
+    }
+
+    res.status(200).json(excursionsCopy);
+
   
   });
+  
   
 /* POST */
 router.post('/', function (req, res) {
