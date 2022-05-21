@@ -1,4 +1,3 @@
-const users = require('../data/usersData');
 const tokens = require('../data/tokensData');
 
 const validToken = (authorizationString) => {

@@ -6,6 +6,7 @@ const excursions = require('../data/excursionsData');
 /* GET */
 router.get('/', function(req, res, next) {
 
+    // Variable that has the search from the searchbar
     const search = req.query["q"] || "";
     const area = req.query["area"] || "";
     const difficulty = req.query["difficulty"] || "";
@@ -42,7 +43,7 @@ router.get('/', function(req, res, next) {
     }
 
     res.status(200).json(excursionsCopy);
-
+ 
   
   });
   

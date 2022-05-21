@@ -1,4 +1,4 @@
-/** Objects of tokens and users
+/** 
  * 
  * example: {
  * 
