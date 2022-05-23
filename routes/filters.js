@@ -11,13 +11,17 @@ const filtersData = require('../data/excursionsData');
 // http://localhost:3001/filters?type=time
 router.get('/', function(req, res, next){
 
-    
+    // Array that saves the filters info
     let arrayResult = [];
+    // Copy array of arrayResult that is used to copy the information that arraResult has to not lose it
     let arrayResultCopy = [];
+    // Variable that has the type of filter that is needed in that moment
     const filter = req.query["type"] || "";
     
+    // If filter is area, difficulty or time then
     if(["area", "difficulty", "time"].includes(filter)){
 
+        // We save the correct filters in the arrayResult
         arrayResult = filtersData.map(function(excursion){
 
             switch(filter){
@@ -35,6 +39,7 @@ router.get('/', function(req, res, next){
                         arrayResult.push(excursion.time);
 
             }   
+            // Then we copy the array to arrayResultCopy to not lose the info that arraYResult had
             arrayResultCopy = arrayResult.valueOf();   
         });
 
