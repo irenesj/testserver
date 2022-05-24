@@ -4,7 +4,7 @@ const router = express.Router();
 const users = require('../data/usersData');
 const tokens = require('../data/tokensData');
 
-// https://localhost:3001/token/
+// http://localhost:3001/token/
 router.get('/:token', function(req, res){
 
     const currentToken = req.params["token"];
