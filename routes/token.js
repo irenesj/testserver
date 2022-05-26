@@ -4,44 +4,50 @@ const router = express.Router();
 const users = require('../data/usersData');
 const tokens = require('../data/tokensData');
 
+// This endpoint verifies if a token is valid (if it´s in the tokens map)
 // http://localhost:3001/token/
-router.get('/:token', function(req, res){
+/** GET */
+router.get('/:token', function (req, res) {
 
-    const currentToken = req.params["token"];
+  // We get the token 
+  const currentToken = req.params["token"];
 
-    //  200 204, si currentToken está en tokens => token válido
-    if(currentToken in tokens) {
+  // if currentToken is in tokens then it´s a valid token
+  if (currentToken in tokens) {
 
-        const userMail = tokens[currentToken];
-        const arrayUser = users.filter( user => (user.mail) == userMail );
-        const userCopy = {
-            ...arrayUser[0]
-          }
-      
-        delete userCopy["password"];
+    // We get the user´s mail from the map of tokens
+    const userMail = tokens[currentToken];
+    // With that mail, then we get the user from the array of objects of users
+    const arrayUser = users.filter(user => (user.mail) == userMail);
 
-        res.status(200).json({ "user" : userCopy });
-
+    // Then we copy the user ...
+    const userCopy = {
+      ...arrayUser[0]
     }
-     // y si no => token no válido
-    // 404
-    else{
+    // ... and delete the password for security
+    delete userCopy["password"];
 
-        res.status(404).send();
+    // Finally, we send the user copy as the response
+    res.status(200).json({ "user": userCopy });
 
-    }
+  }
+  else {
+
+    res.status(404).send();
+
+  }
 
 })
 
 /** OPTIONS */
-router.options('/', function(req, res){
-  
-    res.status(200);
-    res.setHeader('Access-Control-Allow-Origin','*');
-    res.setHeader('Access-Control-Allow-Methods', 'POST, GET, DELETE, OPTIONS');
-    res.send();
-  
-  }
+router.options('/', function (req, res) {
+
+  res.status(200);
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, GET, DELETE, OPTIONS');
+  res.send();
+
+}
 );
 
 module.exports = router;
