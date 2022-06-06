@@ -37,17 +37,16 @@ router.post('/', function(req, res){
   }
   else { // If there is
 
-    // We generate a random token ...
+    // We generate a random token...
     const token = generateToken();
-    // ... and assign that token to the user's mail: example "876578gfhjrfb755868": "userLogged@mail.com"
+    // ...and assign that token to the user's mail: example "876578gfhjrfb755868": "userLogged@mail.com"
     tokens[token] = arrayResult[0].mail;
     res.status(200).setHeader('Location', `http://localhost:3001/login`);
 
-    // Now we make a copy of the logged user to be able to send the response without his/her password for security reasons
+    // Now we make a copy of the logged user
     const userCopy = {
       ...arrayResult[0]
     }
-    delete userCopy["password"];
     
     // Then we send the token and the user to the client
     res.json({ token: token, user: userCopy });
@@ -59,9 +58,9 @@ router.post('/', function(req, res){
 /** LOGOUT */
 router.delete('/', function(req, res, next){
 
-  // We ibtain the user's token ...
+  // We ibtain the user's token...
   const token = req.headers.authorization.substring("Bearer ".length);
-  // ... and then delete it from the tokens in the database
+  // ...and then delete it from the tokens in the database
   delete tokens[token];
   res.status(200);
   res.json({
