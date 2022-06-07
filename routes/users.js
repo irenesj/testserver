@@ -70,9 +70,13 @@ router.put('/:mail', function(req, res, next){
 
   if(currentToken && currentUser[0]){
 
+    if(req.body.password === ""){
+
+      delete req.body["password"];
+
+    }
     Object.assign(currentUser[0], req.body);
     res.status(200).json(currentUser[0]);
-
   }
   else{
 

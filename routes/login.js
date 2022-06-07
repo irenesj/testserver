@@ -43,10 +43,12 @@ router.post('/', function(req, res){
     tokens[token] = arrayResult[0].mail;
     res.status(200).setHeader('Location', `http://localhost:3001/login`);
 
-    // Now we make a copy of the logged user
+    // Now we make a copy of the logged user and delete the password for security reasons
     const userCopy = {
       ...arrayResult[0]
     }
+
+    delete userCopy["password"];
     
     // Then we send the token and the user to the client
     res.json({ token: token, user: userCopy });
