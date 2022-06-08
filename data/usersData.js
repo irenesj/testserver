@@ -5,7 +5,7 @@ var users = [
       id: 0,
       name: "usuario1",
       surname: "apellidosUsuario1",
-      phone: "11111111",
+      phone: "678956453",
       mail: "usuario1@mail.com",
       password: "123456qw",
       excursions: []
@@ -15,7 +15,7 @@ var users = [
       id: 1,
       name: "usuario2",
       surname: "apellidosUsuario2",
-      phone: "11111111",
+      phone: "680152657",
       mail: "usuario2@mail.com",
       password: "123456qr",
       excursions: []
