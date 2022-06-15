@@ -3,36 +3,36 @@ const res = require('express/lib/response');
 const router = express.Router();
 const users = require('../data/usersData');
 const tokens = require('../data/tokensData'); // const: la referencia no se cambia, es decir, no se puede apuntar a otro sitio
-  
-  
+
+
 // This function generates a token with 40 random letters and numbers
 const generateToken = () => {
 
-    const avalaibleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const length = 40;
-    let token = '';
-  
-    for ( let i = 0; i < length; i++ ) {
-      token += avalaibleChars.charAt(Math.floor(Math.random() * avalaibleChars.length));
-    }
-  
-    return token;
-    
+  const avalaibleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const length = 40;
+  let token = '';
+
+  for (let i = 0; i < length; i++) {
+    token += avalaibleChars.charAt(Math.floor(Math.random() * avalaibleChars.length));
+  }
+
+  return token;
+
 }
 
 /** LOGIN */
-router.post('/', function(req, res){
+router.post('/', function (req, res) {
 
   // We take the mail and the password of the user that wants to log
   const { mail, password } = req.body;
 
   // Then we search in the database is there´s an user with that mail and that password
-  const arrayResult = users.filter(user => user.mail.toLowerCase() == mail.toLowerCase() && user.password == password); 
-  
-  // If there's none
-  if(arrayResult.length == 0){
+  const arrayResult = users.filter(user => user.mail.toLowerCase() == mail.toLowerCase() && user.password == password);
 
-    res.status(401).json({error: 'Datos erróneos. Inténtalo de nuevo.'});
+  // If there's none
+  if (arrayResult.length == 0) {
+
+    res.status(401).json({ error: 'Datos erróneos. Inténtalo de nuevo.' });
 
   }
   else { // If there is
@@ -49,7 +49,7 @@ router.post('/', function(req, res){
     }
 
     delete userCopy["password"];
-    
+
     // Then we send the token and the user to the client
     res.json({ token: token, user: userCopy });
 
@@ -58,7 +58,7 @@ router.post('/', function(req, res){
 );
 
 /** LOGOUT */
-router.delete('/', function(req, res, next){
+router.delete('/', function (req, res, next) {
 
   // We ibtain the user's token...
   const token = req.headers.authorization.substring("Bearer ".length);
@@ -67,16 +67,16 @@ router.delete('/', function(req, res, next){
   res.status(200);
   res.json({
 
-    token:token
-    
+    token: token
+
   });
 })
 
 /** OPTIONS */
-router.options('/', function(req, res){
-  
+router.options('/', function (req, res) {
+
   res.status(200);
-  res.setHeader('Access-Control-Allow-Origin','*');
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, GET, DELETE, OPTIONS');
   res.send();
 

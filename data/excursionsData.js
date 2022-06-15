@@ -1,6 +1,6 @@
 /* Array to save excursions */
 var excursions = [
-    
+
     {
         id: 0,
         name: "Cangas de Onís",
