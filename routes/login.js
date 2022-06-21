@@ -3,22 +3,8 @@ const res = require('express/lib/response');
 const router = express.Router();
 const users = require('../data/usersData');
 const tokens = require('../data/tokensData'); // const: la referencia no se cambia, es decir, no se puede apuntar a otro sitio
+const helpers = require('../helpers/helpers');
 
-
-// This function generates a token with 40 random letters and numbers
-const generateToken = () => {
-
-  const avalaibleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  const length = 40;
-  let token = '';
-
-  for (let i = 0; i < length; i++) {
-    token += avalaibleChars.charAt(Math.floor(Math.random() * avalaibleChars.length));
-  }
-
-  return token;
-
-}
 
 /** LOGIN */
 router.post('/', function (req, res) {
@@ -38,7 +24,7 @@ router.post('/', function (req, res) {
   else { // If there is
 
     // We generate a random token...
-    const token = generateToken();
+    const token = helpers.generateToken();
     // ...and assign that token to the user's mail: example "876578gfhjrfb755868": "userLogged@mail.com"
     tokens[token] = arrayResult[0].mail;
     res.status(200).setHeader('Location', `http://localhost:3001/login`);
