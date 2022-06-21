@@ -27,7 +27,7 @@ router.post('/', function (req, res) {
     const token = helpers.generateToken();
     // ...and assign that token to the user's mail: example "876578gfhjrfb755868": "userLogged@mail.com"
     tokens[token] = arrayResult[0].mail;
-    res.status(200).setHeader('Location', `http://localhost:3001/login`);
+    res.status(200);
 
     // Now we make a copy of the logged user and delete the password for security reasons
     const userCopy = {
