@@ -1,6 +1,6 @@
 const tokens = require('../data/tokensData');
 
-
+// This function says if a token is valid. A token is valid when it's in our database, in our case in the array "tokens"
 const validToken = (authorizationString) => {
 
     return authorizationString in tokens;

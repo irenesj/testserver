@@ -1,7 +1,7 @@
 const express = require('express');
+const router = express.Router();
 const req = require('express/lib/request');
 const res = require('express/lib/response');
-const router = express.Router();
 const users = require('../data/usersData');
 const { validToken } = require('../helpers/helpers');
 
@@ -27,10 +27,11 @@ router.post('/', function (req, res) {
   // First we get the mail of the user that wants to register
   const { mail } = req.body;
 
+  // We see if there´s already an user with that mail in the database
   let arrayResult = users.filter(user => (user.mail).toLowerCase() == mail.toLowerCase());
 
 
-  // And then see if there´s already a user with that mail
+  // If there's one
   if (arrayResult.length > 0) {
     res.status(409).json({ error: 'Ya existe un usuario con ese correo electrónico.' });
   }
@@ -64,12 +65,17 @@ router.put('/:mail', function (req, res, next) {
     return;
 
   }
+  // If the token is valid, (if it's in the database)
   const currentToken = validToken(req.headers.authorization.substring("Bearer ".length));
+  // We obtain the mail of the user currently logged in...
   const currentMail = req.params["mail"];
+  // ...and see if there's an user in the database with that mail
   const currentUser = users.filter(user => (user.mail).toLowerCase() == currentMail.toLowerCase());
 
+  // If the token and the token of the current user is the same
   if (currentToken && currentUser[0]) {
 
+    // We update the user's info
     Object.assign(currentUser[0], req.body);
     res.status(200).json(currentUser[0]);
   }
@@ -91,12 +97,17 @@ router.put('/:mail/excursions/:id', function (req, res, next) {
     return;
 
   }
+  // If the token is valid, (if it's in the database)
   const currentToken = validToken(req.headers.authorization.substring("Bearer ".length));
+  // We obtain the mail of the user currently logged in...
   const currentMail = req.params["mail"];
+  // ...and see if there's an user in the database with that mail
   const currentUser = users.filter(user => (user.mail).toLowerCase() == currentMail.toLowerCase());
 
+  // If the token and the token of the current user is the same
   if (currentToken && currentUser[0]) {
 
+    // We add the excursion to his/her array of excursions
     currentUser[0].excursions.push(parseInt(req.params["id"]));
     res.status(200).json(currentUser[0]);
 

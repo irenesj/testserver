@@ -20,11 +20,11 @@ router.get('/:token', function (req, res) {
     // With that mail, then we get the user from the array of objects of users
     const arrayUser = users.filter(user => (user.mail) == userMail);
 
-    // Then we copy the user ...
+    // Then we copy the user...
     const userCopy = {
       ...arrayUser[0]
     }
-    // ... and delete the password for security
+    // ...and delete the password for security
     delete userCopy["password"];
 
     // Finally, we send the user copy as the response
