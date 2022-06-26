@@ -13,7 +13,7 @@ router.get('/', function (req, res, next) {
 
     // Array that saves the filters info
     let arrayResult = [];
-    // Copy array of arrayResult that is used to copy the information that arraResult has to not lose it
+    // Copy array of arrayResult that is used to copy the information that arrayResult
     let arrayResultCopy = [];
     // Variable that has the type of filter that is needed in that moment
     const filter = req.query["type"] || "";
@@ -23,7 +23,7 @@ router.get('/', function (req, res, next) {
 
         // We save the correct filters in the arrayResult
         arrayResult = filtersData.map(function (excursion) {
-
+ 
             switch (filter) {
 
                 case 'area':

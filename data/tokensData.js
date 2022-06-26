@@ -5,7 +5,7 @@
  * }
  */
 
-
+// Array to save tokens of users that are logged in or just registered. Their token is associated with their mail
 var tokens = {
 
 

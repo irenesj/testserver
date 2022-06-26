@@ -2,7 +2,7 @@ const express = require('express');
 const res = require('express/lib/response');
 const router = express.Router();
 const users = require('../data/usersData');
-const tokens = require('../data/tokensData'); // const: la referencia no se cambia, es decir, no se puede apuntar a otro sitio
+const tokens = require('../data/tokensData');
 const helpers = require('../helpers/helpers');
 
 
@@ -12,7 +12,7 @@ router.post('/', function (req, res) {
   // We take the mail and the password of the user that wants to log
   const { mail, password } = req.body;
 
-  // Then we search in the database is there´s an user with that mail and that password
+  // Then we search in the database if there´s an user with that mail and that password
   const arrayResult = users.filter(user => user.mail.toLowerCase() == mail.toLowerCase() && user.password == password);
 
   // If there's none
@@ -46,7 +46,7 @@ router.post('/', function (req, res) {
 /** LOGOUT */
 router.delete('/', function (req, res, next) {
 
-  // We ibtain the user's token...
+  // We obtain the user's token...
   const token = req.headers.authorization.substring("Bearer ".length);
   // ...and then delete it from the tokens in the database
   delete tokens[token];
