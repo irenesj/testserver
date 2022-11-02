@@ -3,7 +3,7 @@ const res = require('express/lib/response');
 const router = express.Router();
 const excursions = require('../data/excursionsData');
 
-/* GET */
+/** GET */
 router.get('/', function (req, res, next) {
 
     // Variable that has the search info from the searchbar
@@ -55,7 +55,7 @@ router.get('/', function (req, res, next) {
 });
 
 
-/* POST */
+/** POST 
 router.post('/', function (req, res) {
 
     var name = req.body.name || '';
@@ -74,6 +74,6 @@ router.post('/', function (req, res) {
     }
 }
 
-);
+);*/
 
 module.exports = router;

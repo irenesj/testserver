@@ -6,7 +6,7 @@ const users = require('../data/usersData');
 const { validToken } = require('../helpers/helpers');
 
 
-/* GET to get the users mail*/
+/** GET to get the users mail */
 router.get('/', function (req, res, next) {
 
   const response = users.map(userMail => {
@@ -18,10 +18,10 @@ router.get('/', function (req, res, next) {
 
 });
 
-/** Counter for users's id */
+// Counter for users's id
 let counter = 2;
 
-/* POST for creating a new user*/
+/** POST for creating a new user */
 router.post('/', function (req, res) {
 
   // First we get the mail of the user that wants to register
@@ -87,7 +87,7 @@ router.put('/:mail', function (req, res, next) {
 
 });
 
-/** PUT for updating the users's excursions lists */
+/** PUT for updating the users's excursions list */
 router.put('/:mail/excursions/:id', function (req, res, next) {
 
   // We see if the token is valid and if it pertains to the user that wants to update his/her info  
